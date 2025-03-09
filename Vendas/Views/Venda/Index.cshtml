@@ -1,0 +1,47 @@
+﻿@model IEnumerable<Vendas.Models.Venda>
+@{
+    ViewData["Title"] = "Lista de Vendas";
+}
+<h2>Lista de Vendas</h2>
+
+<form method="get" asp-controller="Venda" asp-action="Index">
+    <div class="form-group">
+        <input type="text" name="searchString" class="form-control" placeholder="Pesquisar pelo Cliente ou Produto..." />
+    </div>
+    <button type="submit" class="btn btn-primary">Pesquisar</button>
+    <a asp-action="Create" class="btn btn-success">Nova Venda</a>
+    <a asp-action="LoadFromApi" class="btn btn-info">Carregar da API</a>
+</form>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Id Venda</th>
+            <th>Cliente</th>
+            <th>Produto</th>
+            <th>Quantidade</th>
+            <th>Valor Unitário</th>
+            <th>Data Venda</th>
+            <th>Valor Total</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+                <tr>
+                    <td>@item.idVenda</td>
+                    <td>@item.Cliente?.nmCliente</td>
+                    <td>@item.Produto?.DscProduto</td>
+                    <td>@item.qtdVenda</td>
+                    <td>@item.vlrUnitarioVenda</td>
+                    <td>@item.dthVenda.ToString("dd/MM/yyyy")</td>
+                    <td>@item.vlrTotalVenda</td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.idVenda" class="btn btn-warning">Editar</a>
+                        <a asp-action="Delete" asp-route-id="@item.idVenda" class="btn btn-danger">Excluir</a>
+                    </td>
+                </tr>
+        }
+    </tbody>
+</table>

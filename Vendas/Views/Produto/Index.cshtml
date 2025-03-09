@@ -1,0 +1,39 @@
+﻿@model IEnumerable<Vendas.Models.Produto>
+@{
+    ViewData["Title"] = "Lista de Produtos";
+}
+<h2>Lista de Produtos</h2>
+
+<form method="get" asp-controller="Produto" asp-action="Index">
+    <div class="form-group">
+        <input type="text" name="searchString" class="form-control" placeholder="Pesquisar descrição..." />
+    </div>
+    <button type="submit" class="btn btn-primary">Pesquisar</button>
+    <a asp-action="Create" class="btn btn-success">Novo Produto</a>
+    <a asp-action="LoadFromApi" class="btn btn-info">Carregar da API</a>
+</form>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Id Produto</th>
+            <th>Descrição</th>
+            <th>Valor Unitário</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.IdProduto</td>
+                <td>@item.DscProduto</td>
+                <td>@item.VlrUnitario</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.IdProduto" class="btn btn-warning">Editar</a>
+                    <a asp-action="Delete" asp-route-id="@item.IdProduto" class="btn btn-danger">Excluir</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,43 @@
+﻿@model Vendas.Models.Venda
+@{
+    ViewData["Title"] = "Nova Venda";
+}
+<h2>Nova Venda</h2>
+
+<form asp-action="Create" method="post">
+    <div class="form-group">
+        <label asp-for="idCliente"></label>
+        <select asp-for="idCliente" class="form-control" asp-items="ViewBag.ClienteList">
+            <option value="">Selecione um Cliente</option>
+        </select>
+        <span asp-validation-for="idCliente" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="idProduto"></label>
+        <select asp-for="idProduto" class="form-control" asp-items="ViewBag.ProdutoList">
+            <option value="">Selecione um Produto</option>
+        </select>
+        <span asp-validation-for="idProduto" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="qtdVenda"></label>
+        <input asp-for="qtdVenda" class="form-control" />
+        <span asp-validation-for="qtdVenda" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="vlrUnitarioVenda"></label>
+        <input asp-for="vlrUnitarioVenda" class="form-control" />
+        <span asp-validation-for="vlrUnitarioVenda" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="dthVenda"></label>
+        <input asp-for="dthVenda" class="form-control" type="date" />
+        <span asp-validation-for="dthVenda" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-success">Salvar</button>
+    <a asp-action="Index" class="btn btn-secondary">Voltar</a>
+</form>
+
+@section Scripts {
+        <partial name="_ValidationScriptsPartial" />
+}
