@@ -1,4 +1,4 @@
-# 🛒 CRUD Vendas - Sales Management System
+# 🛒 Campos Vendas - Sales Management System
 
 A modern sales management system built with **ASP.NET MVC (.NET 8.0)** and **SQL Server**. Manage clients, products, and sales with ease while synchronizing data from external APIs.
 
